@@ -43,7 +43,10 @@ class Register(Resource):
     @auth_ns.expect(register_user)
     def post(self):
         data = self.api.payload
+<<<<<<< HEAD
 
+=======
+>>>>>>> 95a2f5c (add category evan)
         user = register_user(data)
 
         return {
@@ -119,6 +122,7 @@ class Refresh(Resource):
         }, 200
 
 
+<<<<<<< HEAD
 # ================== ELASTIC ROUTES ==================
 
 from app.extensions import create_es
@@ -186,3 +190,72 @@ class ListIndices(Resource):
 
         except Exception as e:
             return {"error": str(e)}, 500
+=======
+# # ================== ELASTIC ROUTES ==================
+
+# from app.extensions import init_es
+
+# @auth_ns.route("/create-index")
+# class CreateIndex(Resource):
+
+#     @auth_ns.expect(create_index_model)
+#     def post(self):
+#         es = init_es()
+
+#         try:
+#             data = request.get_json()
+
+#             if not data or "index" not in data:
+#                 return {"error": "index field is required"}, 400
+
+#             index_name = data["index"].strip().lower()
+
+#             print("INDEX NAME:", index_name)
+
+#             # Validate index name
+#             if not index_name:
+#                 return {"error": "index_name is empty"}, 400
+
+#             if " " in index_name:
+#                 return {"error": "index_name must not contain spaces"}, 400
+
+#             # Check if exists
+#             if es.indices.exists(index=index_name):
+#                 return {"message": "Index already exists"}, 200
+
+#             # Create index
+#             es.indices.create(index=index_name)
+
+#             return {
+#                 "message": f"Index '{index_name}' created successfully"
+#             }, 201
+
+#         except Exception as e:
+#             print("ERROR:", str(e))
+#             return {"error": str(e)}, 500
+
+
+# @auth_ns.route("/indices")
+# class ListIndices(Resource):
+
+#     def get(self):
+#         es = init_es()
+
+#         try:
+#             indices = es.cat.indices(format="json")
+
+#             result = [
+#                 {
+#                     "index": item.get("index"),
+#                     "docs_count": item.get("docs.count"),
+#                     "health": item.get("health"),
+#                     "status": item.get("status")
+#                 }
+#                 for item in indices
+#             ]
+
+#             return {"indices": result}, 200
+
+#         except Exception as e:
+#             return {"error": str(e)}, 500
+>>>>>>> 95a2f5c (add category evan)

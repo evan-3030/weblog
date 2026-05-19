@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 from flask_jwt_extended import JWTManager
 from elasticsearch import Elasticsearch
 import os
+=======
+
+from flask_jwt_extended import JWTManager
+from elasticsearch import Elasticsearch
+>>>>>>> 95a2f5c (add category evan)
 
 
 jwt = JWTManager()
@@ -9,6 +15,7 @@ jwt = JWTManager()
 def create_es():
     return Elasticsearch(
         "https://localhost:9200",
+<<<<<<< HEAD
         basic_auth=("elastic", "IIvYHWSHZYHI6DPkkoqg"),
         verify_certs=False
     )
@@ -32,3 +39,9 @@ def create_es():
 
 
 
+=======
+        basic_auth=("elastic", "+T+=fMkgz_-iJ0CUf4b_"),
+        verify_certs=False
+    )
+es = create_es()
+>>>>>>> 95a2f5c (add category evan)
